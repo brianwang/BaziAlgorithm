@@ -1,0 +1,35 @@
+﻿<UserControl
+    x:Class="五行查询器.DatePicker"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:五行查询器"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    DataContext="{Binding RelativeSource={RelativeSource Self}}">
+    <UserControl.Resources>
+        <ResourceDictionary Source="DatePickerStyle.xaml" />
+    </UserControl.Resources>
+    
+    <Grid>
+        <Rectangle Fill="Black" />
+        <!--背景遮罩层-->
+        <TextBlock Text="请选择日期" FontSize="35" FontWeight="ExtraBold" Margin="10 50 0 0" />
+        <Border Padding="2" Width="460" Height="100">
+            <StackPanel Orientation="Horizontal">
+                <!--年-->
+                <ComboBox x:Name="cb_Year" ScrollViewer.VerticalScrollBarVisibility="Hidden" Foreground="White" ItemTemplate="{StaticResource InfoDateTemplate}" ItemsSource="{Binding MyDate.Year}"  Width="100" SelectedItem="{Binding Year, Mode=TwoWay}" Style="{StaticResource DatePickerComboBoxStyle}" ScrollViewer.IsVerticalRailEnabled="True" ItemContainerStyle="{StaticResource DatePickerItem}"/>
+                <!--月-->
+                <ComboBox x:Name="cb_Month" ScrollViewer.VerticalScrollBarVisibility="Hidden" ItemTemplate="{StaticResource InfoDateTemplate}" ItemsSource="{Binding MyDate.Month}"  SelectedItem="{Binding Month, Mode=TwoWay}"  Width="100" Style="{StaticResource DatePickerComboBoxStyle}" ItemContainerStyle="{StaticResource DatePickerItem}"/>
+                <!--日-->
+                <ComboBox x:Name="cb_Day" ScrollViewer.VerticalScrollBarVisibility="Hidden"  ItemTemplate="{StaticResource InfoDateTemplate}" ItemsSource="{Binding MyDate.Day}"  SelectedItem="{Binding Day, Mode=TwoWay}" Width="100" Style="{StaticResource DatePickerComboBoxStyle}" ItemContainerStyle="{StaticResource DatePickerItem}"/>
+                <!--时-->
+                <ComboBox x:Name="cb_Hour" ScrollViewer.VerticalScrollBarVisibility="Hidden"  ItemTemplate="{StaticResource InfoDateTemplate}" ItemsSource="{Binding MyDate.Hour}"  SelectedItem="{Binding Hour, Mode=TwoWay}" Width="100" Style="{StaticResource DatePickerComboBoxStyle}" ItemContainerStyle="{StaticResource DatePickerItem}"/>
+            </StackPanel>
+        </Border>
+        <StackPanel Orientation="Horizontal" VerticalAlignment="Bottom" HorizontalAlignment="Center">
+            <Button Content="选择" FontSize="25" Click="DatePicker_Select" Style="{StaticResource Sweet-RecommandedButton}" />
+            <Button Content="取消" FontSize="25" Click="DatePicker_Cancel" Style="{StaticResource Sweet-Button}" />
+        </StackPanel>
+    </Grid>
+</UserControl>

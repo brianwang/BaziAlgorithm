@@ -1,0 +1,67 @@
+﻿<Page
+    x:Class="五行查询器.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:五行查询器"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <Grid Background="{StaticResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="200"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions >
+            <ColumnDefinition Width="*"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Height="119" Margin="0,40,0,0" Width="284" Grid.Row="0" Grid.Column="0">
+            <Border Background="#FFF15A24" CornerRadius="16" Margin="0" Padding="16,8" Width="284">
+                <StackPanel Margin="0">
+                    <TextBlock TextWrapping="Wrap" FontSize="16" FontFamily="Segoe UI" FontWeight="Light" Foreground="White" Margin="0,36,0,0">
+    			        <Run Text="请输入八字或公历生日"/>
+                    </TextBlock>
+                    <StackPanel Orientation = "Horizontal" HorizontalAlignment = "Center">
+                        <Button Content="查询" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="0,10,0,20" Style="{StaticResource Sweet-RecommandedButton}" Click="Query_Click"/>
+                        <Button Content="选择公历生日" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="20,10,0,20" Style="{StaticResource Sweet-RecommandedButton}" Click="DatePicker_Open"/>
+                    </StackPanel>
+                </StackPanel>
+            </Border>
+            <TextBox Name="txt_bazi" TextWrapping="Wrap" Margin="2,2,2,0" VerticalAlignment="Top" Style="{StaticResource Sweet-TextBox}"/>
+        </Grid>
+        <Grid  Margin="40"  Grid.Row="1" Grid.Column="0">
+            <Border Background="#FFF15A24" CornerRadius="16" Margin="0" Padding="16,8" >
+                <TextBlock Name="txt_result" TextWrapping="Wrap" FontSize="16" FontFamily="Segoe UI" FontWeight="Light" Foreground="White" Margin="0,0,0,0">
+                </TextBlock>
+            </Border>
+        </Grid>
+        <Grid  Margin="40"  Grid.RowSpan="2" Grid.Column="1">
+            <Border Background="#FFF15A24" CornerRadius="16" Margin="0" Padding="16,8" >
+                <TextBlock TextWrapping="Wrap" FontSize="16" FontFamily="Segoe UI" FontWeight="Light" Foreground="White" Margin="0,0,0,0">
+                    给出起名指示。
+                    <LineBreak/>
+                    首先确定八字的命里属性。只需查日干的五行属性，即代表了该八字的五行属性。譬如“戊申辛酉壬寅甲辰”的日干“壬”的属性为水，故该八字对应的命里属性为水。
+                    <LineBreak/>
+                    再计算同类和异类的强度值。所谓同类是指，该八字的五行属性，以及生该五行属性的那个属性，譬如八字的五行属性为水，则水和金合起来称为同类，其他三个：木、火和土合起来称为异类。
+                    <LineBreak/>
+                    五行的相生关系为：金生水，水生木，木生火，火生土，土生金。
+                    <LineBreak/>
+                    得到了同类和异类的强度值以后，一个基本的判断是，若两者的数值比较接近，则说明该八字比较平衡，也暗示人生平顺；若两者数值相差较大（比如，大于1，甚至大于2），则说明五行不平衡，可以通过名字来弥补，或者将来找对象时候通过婚姻来补平。
+                    <LineBreak/>
+                    因此，得到同类和异类数值以后，如何确定“用神”或“喜神”，或者，如何在名字中补平，需要一点点人脑智能，目前尚未量化到算法或程序中。回到前面的例子：
+                    <LineBreak/>
+                    日干为壬，属水，故命属水
+                    <LineBreak/>
+                    “同类”数值：5.04
+                    <LineBreak/>
+                    “异类”数值：3.8
+                    <LineBreak/>
+                    “同类”比“异类”数值大，日主强，以火为用神。宜补火。
+                    <LineBreak/>
+                    最后，定下怎么补五行属性以后，剩下就是挑字了，这可以自由发挥了。康熙字典上每个字都有五行属性，可以在Internet上查到。
+                </TextBlock>
+            </Border>
+        </Grid>
+    </Grid>
+</Page>
